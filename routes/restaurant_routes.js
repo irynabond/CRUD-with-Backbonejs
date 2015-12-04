@@ -4,6 +4,10 @@ var Restaurant = require(__dirname + '/../models/restaurant.js');
 var handleError = require(__dirname + '/../lib/handleServerError.js');
 var restaurantsRouter = module.exports = exports = express.Router();
 
+restaurantsRouter.get('/', function(req, res) {
+  res.sendFile('../index.html');
+});
+
 restaurantsRouter.get('/restaurants', function(req, res) {
   Restaurant.find({},
   function(err, data) {
