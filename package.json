@@ -1,0 +1,23 @@
+{
+  "name": "crud_backbone",
+  "version": "1.0.0",
+  "description": "crud backbonejs",
+  "main": "index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinasharma/CRUD-with-Backbonejs.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tinasharma/CRUD-with-Backbonejs/issues"
+  },
+  "homepage": "https://github.com/tinasharma/CRUD-with-Backbonejs#readme"
+}
