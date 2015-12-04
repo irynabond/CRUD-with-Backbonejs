@@ -19,5 +19,17 @@
   "bugs": {
     "url": "https://github.com/tinasharma/CRUD-with-Backbonejs/issues"
   },
-  "homepage": "https://github.com/tinasharma/CRUD-with-Backbonejs#readme"
+  "homepage": "https://github.com/tinasharma/CRUD-with-Backbonejs#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.2.9",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "chai-http": "^1.0.0",
+    "gulp": "^3.9.0",
+    "mocha": "^2.3.4"
+  }
 }
