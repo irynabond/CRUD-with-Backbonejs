@@ -4,11 +4,6 @@ var Restaurant = require(__dirname + '/../models/restaurant.js');
 var handleError = require(__dirname + '/../lib/handleServerError.js');
 var restaurantsRouter = module.exports = exports = express.Router();
 
-// restaurantsRouter.get('/', function(req, res) {
-//   console.log("this is working, why is the link not??");
-//   res.sendFile(__dirname + '../index.html');
-// });
-
 restaurantsRouter.get('/restaurants', function(req, res) {
   Restaurant.find({},
   function(err, data) {
@@ -17,7 +12,7 @@ restaurantsRouter.get('/restaurants', function(req, res) {
   });
 });
 
-restaurantsRouter.post('/restaurants', bodyParser(), function(req,res) {
+restaurantsRouter.post('/restaurants', bodyParser.json(), function(req,res) {
   var newRestaurant = new Restaurant(req.body);
   newRestaurant.save(function(err, data) {
     if (err) return handleServerError(err, res);
