@@ -33,7 +33,7 @@ close: function(){
       success: function(data){
         console.log(data);
       }
-    })  
+    }); 
   }
   this.$el.removeClass('editing');
 },

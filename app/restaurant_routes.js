@@ -5,7 +5,7 @@ var handleError = require(__dirname + '/../lib/handleServerError.js');
 var restaurantsRouter = module.exports = exports = express.Router();
 
 restaurantsRouter.get('/', function (req, res) {
-  res.sendFile(__dirname + '/lib/index.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 restaurantsRouter.get('/restaurants', function(req, res) {

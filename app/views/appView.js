@@ -49,7 +49,7 @@ addAll: function(){
     return {
       title: this.input.val().trim(),
       liked: false
-    }  
+    }; 
   }
 });
 
