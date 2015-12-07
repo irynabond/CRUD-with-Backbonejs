@@ -2,6 +2,14 @@
 app.AppView = Backbone.View.extend({
 el: '#restaurantsApp',
 initialize: function () {
+  var that = this;
+  /*$.ajax({
+      url: window.location.origin + '/getRestaurants',
+      success: function (data) {
+        //app.restaurantsList.model = data;
+        console.log(data)
+      }
+    });*/
   this.input = this.$('#new-restaurant');
   app.restaurantsList.on('add', this.addAll, this);
   app.restaurantsList.on('reset', this.addAll, this);
@@ -14,16 +22,7 @@ createRestaurantOnEnter: function(e){
   if ( e.which !== 13 || !this.input.val().trim() ) { // ENTER_KEY = 13
     return;
   }
-  app.restaurantsList.create(this.newAttributes());
-  $.ajax({
-      type: 'POST',
-      data: JSON.stringify({title: this.input.val().trim(), liked: false}),
-      contentType: "application/json; charset=utf-8",
-      url: window.location.origin + '/addRestaurant',
-      success: function(data){
-        console.log(data);
-      }
-    })  
+  app.restaurantsList.create(this.newAttributes()); 
   this.input.val(''); // clean input box
 },
 addOne: function(restaurants){
@@ -50,8 +49,7 @@ addAll: function(){
     return {
       title: this.input.val().trim(),
       liked: false
-    }
-    
+    }  
   }
 });
 

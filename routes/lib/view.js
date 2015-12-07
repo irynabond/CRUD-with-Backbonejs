@@ -2,10 +2,6 @@ app.RestaurantsView = Backbone.View.extend({
 tagName: 'li',
 template: _.template($('#item-template').html()),
 render: function(){
-  $.ajax({
-      url: window.location.origin + '/getRestaurants',
-      success: function (data) {console.log(data) }
-    })
   this.$el.html(this.template(this.model.toJSON()));
   this.input = this.$('.edit');
   return this; // enable chained calls
@@ -29,6 +25,15 @@ close: function(){
   var value = this.input.val().trim();
   if(value) {
     this.model.save({title: value});
+    $.ajax({
+      type: 'PUT',
+      data: JSON.stringify({title: value, liked: false}),
+      contentType: "application/json; charset=utf-8",
+      url: window.location.origin + '/editRestaurant',
+      success: function(data){
+        console.log(data);
+      }
+    })  
   }
   this.$el.removeClass('editing');
 },

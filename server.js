@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 
 var restaurantsRouter = require(__dirname + '/routes/restaurant_routes.js');
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/restaurants');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/restaurant');
 
 app.use(express.static(__dirname + '/routes/lib'));
 app.use(express.static(__dirname + '/lib'));
