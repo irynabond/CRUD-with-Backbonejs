@@ -6,23 +6,127 @@
   <title>Restaurant feedback site</title>
 </head>
 
-<body>
+<body onload="get_data_from_server()">
   <h1>Restuarant feedback</h1>
   <form action="" id="form">
       <label> Name: </label>
-      <input type="text" placeholder="Enter your restaurant">
+      <input type="text" id="name" placeholder="Enter your restaurant">
       <label> Feedback: </label>
       <input type="text" placeholder="Feedback">
-      <button type = "submit"> Add new restaurant </button>
+      <button type = "submit" id="post_data"> Add new restaurant </button>
   </form>
+
+  <div id="data"></div>
+
   <script type="text/template" id="taskTemplate">
     <span> <%= title %> </span><button class="edit">Edit</button> <button class="delete">Delete</button>
   </script>
 
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
-<script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
-  <script src="lib/app.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+  <script src="http://backbonejs.org/backbone.js"></script>
+  <script >
+
+        // $(document).ready(function(){
+        //     Restaurants = Backbone.Collection.extend({
+        //             url:'/api/restaurants'
+        //         });
+
+            function get_data_from_server(){
+              Restaurants = Backbone.Collection.extend({
+                    url:'/api/restaurants'
+                });
+              var restaurants = new Restaurants();
+              restaurants.fetch({
+                success:function(data_array){
+                    console.log(data_array);
+                    for (var i = 0; i < data_array.length; i++) {
+                      data_name = data_array.models[i].attributes.name;
+                      data_id = data_array.models[i].attributes._id;
+                      data_feedback = data_array.models[i].attributes.feedback;
+                      data_name = JSON.stringify(data_name);
+                      data_feedback = JSON.stringify(data_feedback);
+                      data_name = data_name.replace(/\"/g, "");
+                      data_feedback = data_feedback.replace(/\"/g, "");
+
+                      var paraid = data_id.replace(/\"/g, "");
+
+                      //console.log(paraid);
+
+                      var data = "<p id="+paraid+">" + "Restaurant name:  " +data_name + " /  Feedback:  " + data_feedback  + "</p>" ;
+
+                      $('#data').append(data);
+                      update_data(paraid);
+                      delete_data(paraid);
+                    }
+                }
+              });
+            }
+
+            function update_data(name) {
+              console.log(name);
+              var r=$('<input/>').attr({
+                  type: "button",
+                  id: "update_" + name,
+                  value: 'Update'
+              });
+
+                $("#" + name).append(r);
+            }
+
+            function delete_data(name) {
+              console.log(name);
+              var r=$('<input/>').attr({
+                  type: "button",
+                  id: "delete_" + name,
+                  value: 'Delete'
+              });
+
+
+                $("#" + name).append(r);
+
+            }
+
+   $('#post_data').click(function(){
+        console.log('Post Clicked');
+        post_data_to_the_server();
+
+});
+
+
+ function post_data_to_the_server(){
+      var restaurants = new Restaurants();
+      var RestaurantModel = Backbone.Model.extend({});
+      var RestaurantCollection = Backbone.Collection.extend({
+          model: RestaurantModel,
+          url: '/api/restaurants'
+      });
+    var restaurants = new RestaurantCollection();
+
+    restaurants.create();
+  }
+
+  $('#delete_data').click(function(){
+        console.log('Post Clicked');
+        post_data_to_the_server();
+
+});
+
+
+ function delete_data_from_the_server(){
+      var restaurants = new Restaurants();
+      var RestaurantModel = Backbone.Model.extend({});
+      var RestaurantCollection = Backbone.Collection.extend({
+          model: RestaurantModel,
+          url: '/api/restaurants'
+      });
+    var restaurants = new RestaurantCollection();
+
+    restaurants.create();
+  }
+
+
+        </script>
 
 </body>
 
