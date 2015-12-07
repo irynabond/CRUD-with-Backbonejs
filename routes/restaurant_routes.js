@@ -8,7 +8,7 @@ restaurantsRouter.get('/', function (req, res) {
   res.sendFile(__dirname + '/lib/index.html');
 });
 
-restaurantsRouter.get('/restaurants', function(req, res) {
+restaurantsRouter.get('/getRestaurants', function(req, res) {
   Restaurant.find({},
   function(err, data) {
     if (err) return handleServerError(err, res);
@@ -16,11 +16,11 @@ restaurantsRouter.get('/restaurants', function(req, res) {
   });
 });
 
-restaurantsRouter.post('/restaurants', bodyParser.json(), function(req,res) {
+restaurantsRouter.post('/addRestaurant', bodyParser.json(), function(req,res) {
   var newRestaurant = new Restaurant(req.body);
   newRestaurant.save(function(err, data) {
     if (err) return handleServerError(err, res);
-    res.json(data);
+    res.json(req.body);
   });
 });
 

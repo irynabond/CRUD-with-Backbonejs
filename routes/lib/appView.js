@@ -11,10 +11,19 @@ events: {
   'keypress #new-restaurant': 'createRestaurantOnEnter'
 },
 createRestaurantOnEnter: function(e){
-  if ( e.which !== 13 || !this.input.val().trim() ) { 
+  if ( e.which !== 13 || !this.input.val().trim() ) { // ENTER_KEY = 13
     return;
   }
   app.restaurantsList.create(this.newAttributes());
+  $.ajax({
+      type: 'POST',
+      data: JSON.stringify({title: this.input.val().trim(), liked: false}),
+      contentType: "application/json; charset=utf-8",
+      url: window.location.origin + '/addRestaurant',
+      success: function(data){
+        console.log(data);
+      }
+    })  
   this.input.val(''); // clean input box
 },
 addOne: function(restaurants){
@@ -37,10 +46,12 @@ addAll: function(){
   }
 },
   newAttributes: function(){
+    
     return {
       title: this.input.val().trim(),
       liked: false
     }
+    
   }
 });
 

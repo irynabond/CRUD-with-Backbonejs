@@ -7,5 +7,5 @@ app.Restaurants = Backbone.Model.extend({
   },
   toggle: function(){
   	this.save({ liked: !this.get('liked')});
-   }
+  }
 });
