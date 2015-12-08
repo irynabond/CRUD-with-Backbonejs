@@ -6,7 +6,8 @@
   "directories": {
     "test": "test"
   },
-  "scripts": {
+
+ "scripts": {
     "test": "mocha test",
     "start": "node server.js"
   },
