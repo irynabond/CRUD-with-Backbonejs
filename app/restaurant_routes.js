@@ -20,7 +20,7 @@ restaurantsRouter.post('/restaurants', bodyParser.json(), function(req,res) {
   var newRestaurant = new Restaurant(req.body);
   newRestaurant.save(function(err, data) {
     if (err) return handleServerError(err, res);
-    res.json(req.body);
+    res.json(data);
   });
 });
 

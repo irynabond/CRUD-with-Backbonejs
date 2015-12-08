@@ -23,7 +23,7 @@ describe('retaurants routes', function() {
       .end(function(err, res) {
         expect(err).to.eql(null);
         expect(res.body.title).to.eql('Sushi');
-        expect(res.body).to.have.property('liked');
+        expect(res.body).to.have.property('_id');
         done();
       });
   });
