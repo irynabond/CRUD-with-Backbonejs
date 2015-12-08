@@ -1,5 +1,5 @@
 
-!https://travis-ci.org/irynabond/CRUD-with-Backbonejs.svg?branch=master!:https://travis-ci.org/irynabond/CRUD-with-Backbonejs
+[![Build Status](https://travis-ci.org/irynabond/CRUD-with-Backbonejs.svg?branch=master)](https://travis-ci.org/irynabond/CRUD-with-Backbonejs)
 Angular.js vs Backbone.js
 
 AngularJS is a JavaScript framework. AngularJS lets you extend HTML vocabulary for your application. The resulting environment is extraordinarily expressive, readable, and quick to develop. It is a toolset for building the framework most suited to your application development. Directives in Angular is a powerful feature, which is unique to AngularJS. Direcrives let you invent new HTML syntax, specific to your application. Directives are used to create reusable components, which allows you to hide complex DOM structure, CSS, and behavior. This lets you focus either on what the application does or how the application looks separately. The dependency injection in ANgularJS allows you to declaratively describe how your application is wired, which means that any component which does not fit your needs can easily be replaced.
