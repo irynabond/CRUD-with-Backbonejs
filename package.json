@@ -6,8 +6,8 @@
   "directories": {
     "test": "test"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+ "scripts": {
+    "test": "mocha test",
     "start": "node server.js"
   },
   "repository": {
