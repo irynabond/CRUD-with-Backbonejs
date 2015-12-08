@@ -7,6 +7,9 @@ In order to run the app:
 2. Run npm install 
 3. Connect to local mongodb
 3. Run node server.js
+#### What we've made
+We built very simple app with Backbone.js (which has not much styling right now) that allows you to create a list of restaurants which you like or dislike. Our app corresponds with Express routes and MondoDb as well. ( We like the feature of sending request to a server in Backbone.js because all you need is to specify correct url in backbone collection. It saves a time and makes the code more readable.) 
+The client side files are placed in app directory.
 
 #Angular.js vs Backbone.js
 
